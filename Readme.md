@@ -5,7 +5,7 @@
 
 ## Install
 
-  $ npm install segmentio/leader
+    $ npm install segmentio/leader
 
 ## Example
 
