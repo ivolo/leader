@@ -1,55 +1,55 @@
 
 # leader
 
-  Learn more about a person starting with just their email address.
+  Learn more about a lead.
 
 ## Example
 
 ```js
 var Leader = require('leader');
 
-var cc = require('leader-constant-contact');
-var facebook = require('leader-facebook');
-var twitter = require('leader-twitter');
-var linkedin = require('leader-linkedin');
-var github = require('leader-github')
-
 var leader = Leader()
-  .when(cc.wait(), cc.fn())
-  .when(facebook.wait(), facebook.fn())
-  .when(twitter())
-  .when(linkedin())
-  .when(github());
+  .use(constantContact())
+  .use(facebook()))
+  .use(twitter())
+  .use(linkedin())
+  .use(github());
 
 leader.learn({ email: 'ilya@segment.io' }, function (err, context, person) {
-  // ..
+  console.log(person);
 });
 ```
 
-### Using Wait Functions
-
-A [wait](https://github.com/segmentio/parallel-ware) function allows you to ask leader to not run a specific middleware until a piece of information becomes available by another plugin. For example,
+Each leader plugin provides additional information about the person. This example plugin figures out if the person's email domain is interesting:
 
 ```js
-function uid (context, person) {
-  return person.facebook && person.facebook.uid;
+function domain (person, context, next) {
+  var tokens = person.email.split('@');
+  person.domain = tokens[1];
+  person.interesting = tokens[1].indexOf('gmail') === -1;
+  next();
 }
+```
 
-function facebook (context, person, next) {
-  facebook.user(person.facebook.uid, function (err, user) {
-    if (err) return next(err);
-    person.facebook.friends = user.friends.length;
-    next();
-  });
+You can tell leader to wait to run your plugin until you know something about the person:
+
+```js
+function hasEmail (person) {
+  return person.email !== null;
 }
 
 var leader = Leader()
-  .use(uid, facebook);
-
-leader.run(function (err, context, person) {
-  // ..
-});
+  .when(hasEmail, domain);
 ```
+
+## Plugins
+
+Plugins for leader can:
+- query LinkedIn for the company domain
+- query Constant Contact or Rapleaf for demographic information
+- search Google for their personal twitter
+- search Google for the person's domain
+- search Google for the person's personal blog or site
 
 ## API
 
@@ -57,25 +57,21 @@ leader.run(function (err, context, person) {
 
   Create a new Leader instance.
 
-#### .use(middleware)
+#### .use(plugin)
 
-  Add a leader `middleware` which is an object that contains a `fn` middleware and an optional `wait` function, like so `{ fn: fn, wait: wait }`
+  Add a leader `plugin` which is an object that contains a `fn` plugin and a `wait` function, like so `{ wait: hasEmail, fn: domain }`
 
-#### .use([wait], fn)
+#### .when(wait, fn)
 
-  Add a leader middleware `fn`, with an optional [wait](https://github.com/segmentio/parallel-ware) function.
+  Execute the leader plugin `fn` when the `wait` function returns true. Read more about wait functions in [parallel-ware](https://github.com/segmentio/parallel-ware).
 
-#### .email(email, callback)
-
-  Runs a leader query on an `email`.
-
-#### .run(person, callback)
+#### .learn(person, callback)
 
   Runs a leader query on a custom `person` object.
 
 #### .concurrency(max)
 
-  Set the `max` amount of middleware running concurrently.
+  Set the `max` amount of plugin running concurrently.
 
 ## License
 
@@ -92,4 +88,4 @@ WWWWWW||WWWWWW
        (__|__|(__|__|
 ```
 
-[Copyright (c) 2013](https://animals.ivolo.me) [Segment.io](https://segment.io) &lt;friends@segment.io&gt;
+[Copyright (c) 2013](http://animals.ivolo.me) [Segment.io](https://segment.io) &lt;friends@segment.io&gt;
