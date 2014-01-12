@@ -3,6 +3,8 @@
 
   Learn more about a lead.
 
+[![Build Status](https://travis-ci.org/segmentio/leader.png?branch=0.0.1)](https://travis-ci.org/segmentio/leader)
+
 ## Install
 
     $ npm install segmentio/leader
