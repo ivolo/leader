@@ -3,6 +3,10 @@
 
   Learn more about a lead.
 
+## Install
+
+  $ npm install segmentio/leader
+
 ## Example
 
 ```js
