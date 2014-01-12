@@ -1,4 +1,3 @@
-
 # leader
 
   Learn more about a lead.
@@ -15,7 +14,7 @@
 var Leader = require('leader');
 
 var leader = Leader()
-  .use(constantContact())
+  .use(fullContact())
   .use(facebook()))
   .use(twitter())
   .use(linkedin())
@@ -51,7 +50,7 @@ var leader = Leader()
 
 Plugins for leader can:
 - query LinkedIn for the company domain
-- query Constant Contact or Rapleaf for demographic information
+- query Full Contact or Rapleaf for demographic information
 - search Google for their personal twitter
 - search Google for the person's domain
 - search Google for the person's personal blog or site
