@@ -21,7 +21,7 @@ var leader = Leader()
   .use(linkedin())
   .use(github());
   .populate({ email: 'ilya@segment.io' }, function (err, person) {
-    Populate more information about the `person`.
+   // ..
   });
 ```
 
