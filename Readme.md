@@ -15,7 +15,7 @@ var leader = Leader()
   .use(linkedin())
   .use(github());
 
-leader.learn({ email: 'ilya@segment.io' }, function (err, context, person) {
+leader.learn({ email: 'ilya@segment.io' }, function (err, person) {
   console.log(person);
 });
 ```
