@@ -3,11 +3,11 @@
 
   Learn more about a lead.
 
-[![Build Status](https://travis-ci.org/segmentio/leader.png?branch=0.0.1)](https://travis-ci.org/segmentio/leader)
+[![Build Status](https://travis-ci.org/ivolo/leader.png)](https://travis-ci.org/ivolo/leader)
 
 ## Install
 
-    $ npm install segmentio/leader
+    $ npm install ivolo/leader
 
 ## Example
 
@@ -92,5 +92,3 @@ WWWWWW||WWWWWW
         _||_|| _||_||
        (__|__|(__|__|
 ```
-
-[Copyright (c) 2013](http://animals.ivolo.me) [Segment.io](https://segment.io) &lt;friends@segment.io&gt;
