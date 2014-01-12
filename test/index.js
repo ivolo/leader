@@ -1,7 +1,6 @@
 
 var assert = require('assert');
 var Leader = require('..');
-var superagent = require('superagent');
 
 describe('leader', function () {
 
