@@ -35,7 +35,7 @@ You can tell leader to wait to run your plugin until you know something about th
 
 ```js
 function hasEmail (person) {
-  return person.email !== null;
+  return person.email != null;
 }
 
 var leader = Leader()

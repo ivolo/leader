@@ -31,7 +31,7 @@ describe('leader', function () {
 
 
 function hasEmail (person) {
-  return person.email !== null;
+  return person.email != null;
 }
 
 function domain (person, context, next) {
@@ -41,7 +41,7 @@ function domain (person, context, next) {
 }
 
 function hasDomain (person) {
-  return person.domain !== null;
+  return person.domain != null;
 }
 
 function crunchbase (person, context, next) {
