@@ -1,0 +1,10 @@
+{
+  "name": "leader",
+  "version": "0.0.1",
+  "dependencies": {
+    "parallel-ware": "0.0.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.0"
+  }
+}
