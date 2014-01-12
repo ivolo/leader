@@ -20,10 +20,9 @@ var leader = Leader()
   .use(twitter())
   .use(linkedin())
   .use(github());
-
-leader.learn({ email: 'ilya@segment.io' }, function (err, person) {
-  console.log(person);
-});
+  .populate({ email: 'ilya@segment.io' }, function (err, person) {
+    Populate more information about the `person`.
+  });
 ```
 
 Each leader plugin provides additional information about the person. This example plugin figures out if the person's email domain is interesting:
@@ -71,9 +70,9 @@ Plugins for leader can:
 
   Execute the leader plugin `fn` when the `wait` function returns true. Read more about wait functions in [parallel-ware](https://github.com/segmentio/parallel-ware).
 
-#### .learn(person, callback)
+#### .populate(person, callback)
 
-  Runs a leader query on a custom `person` object.
+  Populate more information about the `person`.
 
 #### .concurrency(max)
 

@@ -84,13 +84,13 @@ Leader.prototype.proxy = function (fn) {
 };
 
 /**
- * Learn more about the `person`.
+ * Populate information about a `person`.
  *
  * @param {Object} person
  * @param {Function} callback
  */
 
-Leader.prototype.learn = function (person, callback) {
+Leader.prototype.populate = function (person, callback) {
   if (typeof person !== 'object') throw new Error('Person must be an object.');
   var context = {};
   this.middleware.run(person, context, callback);

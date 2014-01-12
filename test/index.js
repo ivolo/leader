@@ -7,7 +7,7 @@ describe('leader', function () {
   it('should allow adding plugins', function (done) {
     var leader = Leader()
       .when(hasEmail, domain)
-      .learn({ email: 'ilya@segment.io'}, function (err, person) {
+      .populate({ email: 'ilya@segment.io'}, function (err, person) {
         assert(!err);
         assert(person);
         assert(person.domain === 'segment.io');
@@ -19,7 +19,7 @@ describe('leader', function () {
     var leader = Leader()
       .when(hasEmail, domain)
       .when(hasDomain, crunchbase)
-      .learn({ email: 'ilya@segment.io'}, function (err, person) {
+      .populate({ email: 'ilya@segment.io'}, function (err, person) {
         assert(!err);
         assert(person);
         assert(person.company.crunchbase === 'http://www.crunchbase.com/search?query=segment.io');
