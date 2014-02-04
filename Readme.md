@@ -53,6 +53,7 @@ Existing plugins for leader can:
 - [leader-crunchbase-api](https://github.com/tedjt/leader-crunchbase-api) - search for a company name and find its employee count, funding, etc on CrunchBase
 - [leader-domain](https://github.com/ivolo/leader-domain) - determine if an email is personal, disposable, or company
 - [leader-google-domain](https://github.com/ivolo/leader-google-domain) - google an email's domain to find its company link
+- [leader-google-linkedin-company](https://github.com/ivolo/leader-google-linkedin-company) - google an email's domain to find its LinkedIn company profile
  
 Ånd we'd love plugins to: 
 - query LinkedIn for the company domain
